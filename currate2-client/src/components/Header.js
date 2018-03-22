@@ -27,7 +27,7 @@ class Header extends Component {
             <span style={{ color: 'grey' }}>{this.props.auth.email}</span>!
           </Link>
           <div className="divider" />
-          <Link to="/crawler/mynews">
+          <Link to="/mynews">
             <Button color="secondary">Crawling Results</Button>
           </Link>
           <div className="divider" />

@@ -12,14 +12,14 @@
     "server": "set NODE_ENV=development && nodemon index.js",
     "client": "npm run start --prefix currate2-client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild":
-      "NPM_CONFIG_PRODUCTION=false npm install --prefix currate2-client && npm run build --prefix currate2-client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix currate2-client && npm run build --prefix currate2-client"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
+    "cheerio-httpcli": "^0.7.2",
     "concurrently": "^3.5.1",
     "cookie-session": "^2.0.0-beta.3",
     "express": "^4.16.3",

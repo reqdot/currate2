@@ -5,7 +5,12 @@ import * as actions from '../actions';
 
 import Header from './Header';
 import Landing from './Landing';
+import Bulletins from './bulletins/Bulletins';
+import MyBulletins from './bulletins/MyBulletins';
+import BulletinNew from './bulletins/BulletinNew';
 import ChatsForm from './chats/ChatsForm';
+import CrawlerForm from './crawler/CrawlerForm';
+import MyNews from './crawler/MyNews';
 import SignupForm from './signup/SignupForm';
 import SigninForm from './signin/SigninForm';
 import MyPage from './mypage/MyPage';
@@ -22,6 +27,7 @@ class App extends Component {
 
   componentDidMount() {
     this.props.fetchUser();
+    this.props.fetchUser2();
   }
 
   render() {
@@ -54,10 +60,73 @@ class App extends Component {
               }
             />
             <Route
+              path="/mybulletins"
+              render={() =>
+                this.state.isSignedIn || this.props.auth ? (
+                  <MyBulletins />
+                ) : (
+                  <SigninForm />
+                )
+              }
+            />
+            <Route
+              exact
+              path="/bulletins/new/:userId"
+              render={() =>
+                this.state.isSignedIn || this.props.auth._id ? (
+                  <BulletinNew />
+                ) : (
+                  <Bulletins />
+                )
+              }
+            />
+            <Route
+              exact
+              path="/bulletins/new"
+              render={() =>
+                this.state.isSignedIn || this.props.auth ? (
+                  <BulletinNew />
+                ) : (
+                  <SigninForm />
+                )
+              }
+            />
+            <Route
+              exact
+              path="/bulletins"
+              render={() =>
+                this.state.isSignedIn || this.props.auth ? (
+                  <Bulletins />
+                ) : (
+                  <SigninForm />
+                )
+              }
+            />
+            <Route
               path="/chats"
               render={() =>
                 this.state.isSignedIn || this.props.auth ? (
                   <ChatsForm />
+                ) : (
+                  <SigninForm />
+                )
+              }
+            />
+            <Route
+              path="/mynews"
+              render={() =>
+                this.state.isSignedIn || this.props.auth ? (
+                  <MyNews />
+                ) : (
+                  <SigninForm />
+                )
+              }
+            />
+            <Route
+              path="/crawler"
+              render={() =>
+                this.state.isSignedIn || this.props.auth ? (
+                  <CrawlerForm />
                 ) : (
                   <SigninForm />
                 )

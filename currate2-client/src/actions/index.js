@@ -69,7 +69,7 @@ export const submitNews = (userId, values) => async dispatch => {
 
 export const submitMyNews = (userId, values) => async dispatch => {
   const res = await axios.post(`/api/crawler/news/${userId}`, values);
-  window.location = '/crawler/mynews';
+  window.location = '/mynews';
   dispatch({ type: FETCH_NEWS, payload: res.data });
 };
 
@@ -91,9 +91,8 @@ export const deleteNews = id => async dispatch => {
   window.location = '/crawler';
 };
 
-export const deleteMyNews = (id) => async dispatch => {
+export const deleteMyNews = id => async dispatch => {
   await axios.delete(`/api/crawler/news/${id}`, id);
-  window.location = '/cralwer/mynews';
 };
 
 export const submitBulletin = (userId, values) => async dispatch => {

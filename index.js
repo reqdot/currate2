@@ -18,6 +18,8 @@ const io = socketIO(server);
 mongoose.connect(keys.mongoURI);
 
 require('./models/User');
+require('./models/Bulletin');
+require('./models/News');
 require('./services/passport');
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -32,6 +34,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./routes/authRoutes')(app);
+require('./routes/bulletinRoutes')(app);
+require('./routes/crawlerRoutes')(app);
 
 io.on('connection', socket => {
   socket.on('SEND_MESSAGE', function(data) {
